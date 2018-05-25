@@ -40,10 +40,14 @@ Based on the bindings provided by Anthony Chu: [https://github.com/anthonychu/Az
 
 3. Start Debugging
 
-### Run Angular Client Appp
+### Run Angular Client App
 
 1. Clone repository
 2. Run npm install to install required dependencies
 3. Run ng serve to start local test server
 4. Open http://localhost:4200 in (multiple) browser windows
 5. type message and send
+
+### Run UWP Client App
+
+Please note that at least the Windows Fall Creators Update is required for this client as the Microsoft.AspNetCore.SignalR library requires .NETStandard 2.0 which was introduced to UWP with the Fall Creators Update.
