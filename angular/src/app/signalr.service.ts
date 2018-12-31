@@ -27,13 +27,13 @@ export class SignalRService {
     init() {
         console.log(`initializing SignalRService...`);
         this.getConnectionInfo().subscribe(info => {
-            console.log(`received info for endpoint ${info.endpoint}`);
+            console.log(`received info for endpoint ${info.url}`);
             let options = {
-                accessTokenFactory: () => info.accessKey
+                accessTokenFactory: () => info.accessToken
             };
 
             this.hubConnection = new signalR.HubConnectionBuilder()
-                .withUrl(info.endpoint, options)
+                .withUrl(info.url, options)
                 .configureLogging(signalR.LogLevel.Information)
                 .build();
 
