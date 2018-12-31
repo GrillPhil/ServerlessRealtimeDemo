@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
-using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace ServerlessRealtimeDemo
 {
@@ -11,10 +11,10 @@ namespace ServerlessRealtimeDemo
     {
         [FunctionName("negotiate")]
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")]HttpRequest req, 
-                                        [SignalRConnectionInfo(HubName = "broadcast")]AzureSignalRConnectionInfo info, 
-                                        TraceWriter log)
+                                        [SignalRConnectionInfo(HubName = "broadcast")]SignalRConnectionInfo info, 
+                                        ILogger log)
         {
-            log.Info($"Negotiate info for endpoint: {info.Endpoint}");
+            log.LogInformation($"Negotiate info for endpoint: {info.Url}");
 
             return info != null
                 ? (ActionResult)new OkObjectResult(info)

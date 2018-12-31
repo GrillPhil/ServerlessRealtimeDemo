@@ -1,4 +1,4 @@
 export class SignalRConnectionInfo {
-    endpoint: string;
-    accessKey: string;
+   url: string;
+   accessToken: string;
 }
